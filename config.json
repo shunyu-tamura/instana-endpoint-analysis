@@ -1,0 +1,44 @@
+{
+    "app":{
+        "host": "localhost",
+        "port": 3000
+    },
+    "api": {
+      "protocol": "https",
+      "host": "api.example.com",
+      "endpoint": "/api/application-monitoring/analyze/call-groups",
+      "token": "your_api_token",
+      "data": {
+          "service": "対象サービス名"
+      },
+      "metrics": {
+        "basic": [{
+            "metric": "calls",
+            "aggregation": "SUM"
+        },{
+            "metric": "latency",
+            "aggregation": "MEAN"
+        },{
+            "metric": "latency",
+            "aggregation": "MAX"
+        },{
+            "metric": "latency",
+            "aggregation": "MIN"
+        },{
+            "metric": "latency",
+            "aggregation": "P50"
+        }]
+      }
+    },
+    "csv": {
+      "header": [
+        {"id": "endpoint", "title": "ENDPOINT"},
+        {"id": "calls", "title": "CALLS"},
+        {"id": "mean", "title": "AVERAGE"},
+        {"id": "max", "title": "MAX"},
+        {"id": "min", "title": "MIN"},
+        {"id": "p50", "title": "P50"}
+      ]
+    }
+  }
+  
