@@ -3,11 +3,10 @@ const config = require('../config.json');
 
 const apiUrl = `${config.api.protocol}://${config.api.host}${config.api.endpoint}`;
 const apiToken = config.api.token;
-const targetService = config.api.data.service;
 const basicMetrics = config.api.metrics.basic;
 
 // 非同期関数を作成
-async function sendPostRequest(to, windowSize) {
+async function sendPostRequest(to, windowSize, service) {
   try {
     let offset = 0;
     let data = {
@@ -19,7 +18,7 @@ async function sendPostRequest(to, windowSize) {
             "name": "service.name",
             "operator": "EQUALS",
             "entity": "DESTINATION",
-            "value": targetService
+            "value": service
         }],
         "metrics": basicMetrics,
         "order": {
