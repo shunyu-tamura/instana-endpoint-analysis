@@ -47,12 +47,12 @@ async function sendPostRequest(to, windowSize, service) {
     const responseData = response.data;
 
     csvData = responseData.items.map(item => ({
-        name: item.name,
-        calls: item.metrics['calls.sum'][1],
-        mean: item.metrics['latency.mean'][1],
-        max: item.metrics['latency.max'][1],
-        min: item.metrics['latency.max'][1],
-        p50: item.metrics['latency.p50'][1],
+        endpoint: item.name,
+        calls: item.metrics['calls.sum'][0][1],
+        mean: item.metrics['latency.mean'][0][1],
+        max: item.metrics['latency.max'][0][1],
+        min: item.metrics['latency.max'][0][1],
+        p50: item.metrics['latency.p50'][0][1],
       }));
 
     return csvData; // 必要に応じて返り値としても使えます

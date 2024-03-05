@@ -31,7 +31,7 @@ app.get('/analysis/service/:service', async (req, res) => {
     const csvStringifier = createCsvStringifier({
       header: csvHeader, // ヘッダーの設定
     });
-    const csvString = csvStringifier.getHeaderString() + '\n' + csvStringifier.stringifyRecords(response).trim();
+    const csvString = csvStringifier.getHeaderString() + csvStringifier.stringifyRecords(response).trim();
 
     // レスポンスヘッダーを設定
     res.setHeader('Content-Type', 'text/csv');
