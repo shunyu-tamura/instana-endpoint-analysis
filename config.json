@@ -8,9 +8,6 @@
       "host": "api.example.com",
       "endpoint": "/api/application-monitoring/analyze/call-groups",
       "token": "your_api_token",
-      "data": {
-          "service": "対象サービス名"
-      },
       "metrics": {
         "basic": [{
             "metric": "calls",

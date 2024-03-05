@@ -3,15 +3,20 @@ const sendPostRequest = require('./request');
 const config = require('../config.json');
 const createCsvStringifier = require('csv-writer').createObjectCsvStringifier;
 
-
 const app = express();
 
 const host = config.app.host;
 const port = config.app.port;
 
-app.get('/:service', async (req, res) => {
+app.get('/analysis/service/:service', async (req, res) => {
   try {
-    const now = new Date();
+    let now = null;
+    if ( req.query.date ){
+      now = new Date(req.query.date);
+    }else{
+      now = new Date();
+    }
+
     const startOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 9, 0, 0, 0);
     console.log(startOfDay)
     const to = startOfDay.getTime(); // ミリ秒単位のUnix時間
